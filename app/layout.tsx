@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from './components/Header';
 import Navber from './components/Navber';
 import {ApiData} from "./components/ApiData";
+import HeaderTwo from './components/HeaderTwo';
+import NavberTwo from './components/NavberTwo';
 
 const publicSans = Public_Sans({
   variable: "--font-public-sans",
@@ -27,7 +29,9 @@ export default function RootLayout({
       >
         <ApiData>
         <Header/>
+        <HeaderTwo/>
         <Navber/>
+        <NavberTwo/>
         {children}
         </ApiData>
       </body>

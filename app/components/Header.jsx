@@ -5,10 +5,10 @@ import { BsArrowRight } from "react-icons/bs";
 import Container from './Container';
 const Header = () => {
   return (
-    <div className='bg-black'>
+    <div className='bg-black '>
       <Container className="flex items-center justify-between py-1.5 px-4">
         <div className=" ">
-        <Image src="/header.png" height="45" width="160" alt="header"/>
+        <Link className="" href="/"><Image src="/header.png" height="45" width="160" alt="header"/></Link>
       </div>
       <div className="flex gap-3 items-center">
         <p className="font-publicSans text-sm text-white">up to</p>
