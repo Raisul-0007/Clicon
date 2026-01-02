@@ -1,1 +1,4 @@
 @import "tailwindcss";
+.publicSans {
+  font-family: var(--font-public-sans);
+}

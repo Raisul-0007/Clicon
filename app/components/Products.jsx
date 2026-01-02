@@ -3,9 +3,12 @@ import React, { useContext } from 'react'
 import { Data } from './ApiData'
 import Image from 'next/image'
 const products = () => {
-    const {info} = useContext(Data)
-    console.log(info);
-  return (
+    const {info, loading} = useContext(Data)
+    
+    if(loading){
+        return <div className='text-4xl text-center'>Loading...</div>
+    }
+    return (
     <div>
       {info.map((item)=>{
         return(
