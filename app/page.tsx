@@ -4,6 +4,7 @@ import Category from './components/Category';
 import Features from './components/Features';
 import Ads from './components/Ads';
 import HomeProduct from './components/HomeProduct';
+import NewsLetter from './components/NewsLetter';
 export default function Home() {
   return (
     <div className="">
@@ -12,6 +13,7 @@ export default function Home() {
       <Features/>
       <Ads/>
       <HomeProduct/>
+      <NewsLetter/>
       <Products/>
     </div>
   );

@@ -18,7 +18,7 @@ const Features = () => {
         </div>
         <div className="w-4/5">
           <div className="">
-            <h4 className='text-4xl font-semibold pb-10'>Features Products</h4>
+            <h4 className='font-publicSans text-4xl font-semibold pb-10'>Features Products</h4>
           </div>
           <div className="flex flex-wrap">
           {
