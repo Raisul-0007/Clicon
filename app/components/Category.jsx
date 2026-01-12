@@ -65,7 +65,7 @@ const Category = () => {
   if(loading){
     return(
       <div>
-      <h1 className='font-dm text-center text-[40px]'>Loading........</h1>
+      <h1 className='font-dm text-center text-xl'>Loading........</h1>
       </div>
     )
   }

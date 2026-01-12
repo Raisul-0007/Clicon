@@ -3,6 +3,7 @@ import Banner from './components/Banner';
 import Category from './components/Category';
 import Features from './components/Features';
 import Ads from './components/Ads';
+import HomeProduct from './components/HomeProduct';
 export default function Home() {
   return (
     <div className="">
@@ -10,6 +11,7 @@ export default function Home() {
       <Category/>
       <Features/>
       <Ads/>
+      <HomeProduct/>
       <Products/>
     </div>
   );
