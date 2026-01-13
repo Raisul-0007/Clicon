@@ -7,7 +7,15 @@ const Features = () => {
     const {info, loading} =useContext(Data);
     if(loading){
         return(
-            <p className='text-center'>Loading</p>
+            <div className="flex justify-center flex-row gap-2">
+          <div className="w-4 h-4 rounded-full bg-[#1B6392] animate-bounce"></div>
+          <div
+            className="w-4 h-4 rounded-full bg-[#1B6392] animate-bounce [animation-delay:-.3s]"
+          ></div>
+          <div
+            className="w-4 h-4 rounded-full bg-[#1B6392] animate-bounce [animation-delay:-.5s]"
+          ></div>
+        </div>
         )
     }
   return (
@@ -26,8 +34,8 @@ const Features = () => {
               <div key={item.id} className=" w-1/4 px-4">
                 <Image src={item.thumbnail} alt="" width={200} height={200}/>
                 <h2>{item.title}</h2>
-                <p className='text-[#7676768a]'>{item.category}</p>
-                <p className='text-[#2DA5F3]'>${item.price}</p>
+                <p className='font-publicSans text-[#7676768a]'>{item.category}</p>
+                <p className='font-publicSans text-[#2DA5F3]'>${item.price}</p>
               </div>
             ))
           }

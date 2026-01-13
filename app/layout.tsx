@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
-import { Public_Sans } from 'next/font/google'
 import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Header from './components/Header';
-import Navber from './components/Navber';
-import {ApiData} from "./components/ApiData";
-import HeaderTwo from './components/HeaderTwo';
-import NavberTwo from './components/NavberTwo';
+import { Public_Sans } from "next/font/google";
+import { Geist } from "next/font/google";
+import { ApiData } from "./components/ApiData";
 
 const publicSans = Public_Sans({
-  variable: "--font-public-sans",
   subsets: ["latin"],
 });
+
+ 
+const geist = Geist({
+  subsets: ['latin'],
+})
+ 
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,16 +26,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
   return (
     <html lang="en">
       <body
-        className={`${publicSans.variable} antialiased`}
+        className={`${publicSans.className}`}
       >
         <ApiData>
-        <Header/>
-        <HeaderTwo/>
-        <Navber/>
-        <NavberTwo/>
+
         {children}
         </ApiData>
       </body>

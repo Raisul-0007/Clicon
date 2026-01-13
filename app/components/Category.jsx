@@ -4,11 +4,12 @@ import Container from '../components/Container'
 import { FaHeart } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { LuRefreshCcw } from "react-icons/lu";
-import { Data } from './ApiData.jsx'
+import { Data } from './ApiData'
 import Slider from 'react-slick';
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import Image  from 'next/image';
+import Link from 'next/link';
 
 function SampleNextArrow(props) {
   const { onClick } = props;
@@ -31,7 +32,7 @@ function SamplePrevArrow(props) {
 }
 
 const Category = () => {
-  let {info,loading} = useContext(Data)  
+  let {info} = useContext(Data)  
   
   var settings = {
     slidesToShow: 4,
@@ -62,40 +63,33 @@ const Category = () => {
     ]
   }
   
-  if(loading){
-    return(
-      <div>
-      <h1 className='font-dm text-center text-xl'>Loading........</h1>
-      </div>
-    )
-  }
   return (
     <div className='lg:pb-[50px] lg:pt-[30px]'>
         <Container>
               
                 <div className="">
-                <h1 className='font-dm lg:text-[39px] text-[25px] font-bold py-3 text-center text-[#262626]'>Shop with Categorys</h1>
+                <h1 className='font-publicSans lg:text-[39px] text-[25px] font-bold py-3 text-center text-[#262626]'>Shop with Categorys</h1>
                 <div >
                   <Slider {...settings}>
                   {info.map((item)=>(
-                <div className='w-1/4 p-3 relative'>
+                <div key={item.id} className='w-1/4 p-3 relative'>
                   <div className="relative">
-                    <a href="/shop">
+                    <Link href="/shop">
                     <Image className='' height="200" width='200' src={item.thumbnail} alt="" />
-                    </a>
+                    </Link>
                     <div className='absolute bottom-0 right-0 bg-[#FFFFFF] w-[100%] justify-end opacity-0 hover:opacity-100 ease-in-out duration-300 '>
-                    <h3 className='font-dm text-[16px] flex items-center justify-end gap-2 py-2 pr-2 hover:font-bold cursor-pointer '>Add to Wish List < FaHeart/></h3>
-                    <h3 className='font-dm text-[16px] flex items-center justify-end gap-2 py-2 pr-2 hover:font-bold cursor-pointer'>Compare<LuRefreshCcw/></h3>
-                    <h3 className='font-dm text-[16px] flex items-center justify-end gap-2 py-2 pr-2 hover:font-bold cursor-pointer'>Add to Cart <FaCartShopping/></h3>
+                    <h3 className='font-publicSans text-[16px] flex items-center justify-end gap-2 py-2 pr-2 hover:font-bold cursor-pointer '>Add to Wish List < FaHeart/></h3>
+                    <h3 className='font-publicSans text-[16px] flex items-center justify-end gap-2 py-2 pr-2 hover:font-bold cursor-pointer'>Compare<LuRefreshCcw/></h3>
+                    <h3 className='font-publicSans text-[16px] flex items-center justify-end gap-2 py-2 pr-2 hover:font-bold cursor-pointer'>Add to Cart <FaCartShopping/></h3>
                   </div>
-                  <div className="font-dm lg:text-[16px] text-[10px] bg-[#262626] text-[#FFFFFF] py-1 lg:px-2 px-1 absolute lg:top-[15px] top-0 lg:left-[15px] left-0">
+                  <div className="font-publicSans lg:text-[16px] text-[10px] bg-[#262626] text-[#FFFFFF] py-1 lg:px-2 px-1 absolute lg:top-[15px] top-0 lg:left-[15px] left-0">
                     {item.discountPercentage} %
                   </div>
                   </div>
                   <div className="py-5">
-                      <h3 className='font-dm lg:text-[16px] text-[12px]'>{item.title}</h3>
-                      <p className='font-dm lg:text-[16px] text-[12px] text-[#767676]'>{item.category}</p>
-                      <h2 className='font-dm lg:text-[16px] text-[12px] text-[#2DA5F3]'>{item.price} $</h2>
+                      <h3 className='font-publicSans lg:text-[16px] text-[12px]'>{item.title}</h3>
+                      <p className='font-publicSans lg:text-[16px] text-[12px] text-[#767676]'>{item.category}</p>
+                      <h2 className='font-publicSans lg:text-[16px] text-[12px] text-[#2DA5F3]'>{item.price} $</h2>
                   </div>
                 </div>
                 ))}

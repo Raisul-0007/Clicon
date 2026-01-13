@@ -14,7 +14,7 @@ const products = () => {
         return(
             <div key={item.id} className="">
                 <Image src={item.thumbnail} alt={item.title} height="500" width="500" />
-                <h1>{item.title}</h1>
+                <h4 className='font-publicSans'>{item.title}</h4>
             </div>
         )
       })}
