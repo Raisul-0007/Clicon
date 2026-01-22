@@ -1,25 +1,23 @@
 "use client"
-import React, { useContext } from 'react'
-import { Data } from './ApiData'
-import Image from 'next/image'
-const products = () => {
-    const {info, loading} = useContext(Data)
-    
-    if(loading){
-        return <div className='text-4xl text-center'>Loading...</div>
-    }
-    return (
+import React from 'react'
+
+const Products = ({filterCategory,allProducts}) => {
+    const productsToShow =filterCategory.length > 0 ? filterCategory : allProducts
+  return (
     <div>
-      {info.map((item)=>{
-        return(
-            <div key={item.id} className="">
-                <Image src={item.thumbnail} alt={item.title} height="500" width="500" />
-                <h4 className='font-publicSans'>{item.title}</h4>
-            </div>
-        )
-      })}
+      {productsToShow.length === 0 ? (
+        <p>No products found</p>
+      ) : (
+        productsToShow.map((item) => (
+          <div key={item.id}>
+            <h3>{item.title}</h3>
+            <p>{item.category}</p>
+            <p>${item.price}</p>
+          </div>
+        ))
+      )}
     </div>
   )
 }
 
-export default products
+export default Products

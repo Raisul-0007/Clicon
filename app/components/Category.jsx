@@ -35,7 +35,7 @@ const Category = () => {
   let {info} = useContext(Data)  
   
   var settings = {
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 2,
     infinite: true,
     autoplay: true,
@@ -47,15 +47,15 @@ const Category = () => {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 2 ,
-          slidesToScroll: 1,
+          slidesToShow: 2,
+          slidesToScroll: 2,
           infinite: true,
         }
       },
       {
         breakpoint: 640,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
         }
@@ -75,9 +75,9 @@ const Category = () => {
                 <div key={item.id} className='w-1/4 p-3 relative'>
                   <div className="relative">
                     <Link href="/shop">
-                    <Image className='' height="200" width='200' src={item.thumbnail} alt="" />
+                    <Image className='w-[100%]' height="200" width='200' src={item.thumbnail} alt="" />
                     </Link>
-                    <div className='absolute bottom-0 left-0 bg-[#FFFFFF] w-50 justify-end opacity-0 hover:opacity-100 ease-in-out duration-300 '>
+                    <div className='absolute bottom-0 right-0 bg-[#ffff] w-55 justify-end opacity-0 hover:opacity-100 ease-in-out duration-300 '>
                     <h3 className='font-publicSans text-[16px] flex items-center justify-end gap-2 py-2 pr-2 hover:font-bold cursor-pointer '>Add to Wish List < FaHeart/></h3>
                     <h3 className='font-publicSans text-[16px] flex items-center justify-end gap-2 py-2 pr-2 hover:font-bold cursor-pointer'>Compare<LuRefreshCcw/></h3>
                     <h3 className='font-publicSans text-[16px] flex items-center justify-end gap-2 py-2 pr-2 hover:font-bold cursor-pointer'>Add to Cart <FaCartShopping/></h3>
