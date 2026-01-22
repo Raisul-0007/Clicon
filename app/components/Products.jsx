@@ -1,21 +1,28 @@
 "use client"
-import React from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 
-const Products = ({filterCategory,allProducts}) => {
-    const productsToShow =filterCategory.length > 0 ? filterCategory : allProducts
+const Products = ({filterCategory,allpage}) => {
+  let data = filterCategory.length > 0 ? filterCategory : allpage
   return (
-    <div>
-      {productsToShow.length === 0 ? (
-        <p>No products found</p>
-      ) : (
-        productsToShow.map((item) => (
-          <div key={item.id}>
-            <h3>{item.title}</h3>
-            <p>{item.category}</p>
-            <p>${item.price}</p>
+    <div className="flex flex-wrap justify-between">
+      {data.map((item)=>(
+      <div key={item.id} className='w-1/3 p-3 relative'>
+        <div className="relative">
+          <Link href="/shop">
+            <Image className='w-[100%]' height="200" width='200' src={item.thumbnail} alt="" />
+          </Link>
+          <div className="font-publicSans lg:text-[16px] text-[10px] bg-[#262626] text-[#FFFFFF] py-1 lg:px-2 px-1 absolute lg:top-[15px] top-0 lg:left-[15px] left-0">
+            {item.discountPercentage} %
           </div>
-        ))
-      )}
+        </div>
+          <div className="py-5">
+            <h3 className='font-publicSans lg:text-[16px] text-[12px]'>{item.title}</h3>
+            <p className='font-publicSans lg:text-[16px] text-[12px] text-[#767676]'>{item.category}</p>
+            <h2 className='font-publicSans lg:text-[16px] text-[12px] text-[#2DA5F3]'>{item.price} $</h2>
+          </div>
+      </div>
+      ))}
     </div>
   )
 }

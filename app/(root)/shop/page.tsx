@@ -94,7 +94,7 @@ const page = () => {
             <option className='text-lg w-full' value="12">12</option>
           </select>
         </div>
-        <Products allProducts={info} filterCategory={filterCategory}/>
+        <Products allpage={allpage} filterCategory={filterCategory}/>
         <Pagination pageNumber={pageNumber} paginate={paginate} prev={prev} next={next} currentpage={currentpage} filterCategory={filterCategory}/>
       </div>
       </Container>

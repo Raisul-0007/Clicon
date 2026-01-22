@@ -9,7 +9,7 @@ const Pagination = ({pageNumber, paginate, prev, next, currentpage, filterCatego
       <a href="#" className="font-publicSans lg:text-[14px] text-[10px] px-3 py-2 text-gray-500 bg-white border border-gray-300 hover:bg-[#262626] hover:text-white cursor-pointer">Previous</a>
     </li>
     {pageNumber.map((item, index)=>(
-    <li key={item.id} onClick={()=>paginate(index)}>
+    <li key={index} onClick={()=>paginate(index)}>
       <a href="#" aria-current="page" className={`${currentpage == index + 1 ? "font-publicSans lg:text-[14px] text-[10px] px-3 py-2 border hover:bg-[#767676] border-gray-300 bg-[#262626] text-white cursor-pointer" : "font-publicSans lg:text-[14px] text-[10px] px-3 py-2 text-gray-500 bg-white border border-gray-300 hover:bg-[#262626] hover:text-white cursor-pointer"}`}>{item}</a>
     </li>
     ))}
