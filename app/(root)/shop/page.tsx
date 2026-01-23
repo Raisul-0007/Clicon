@@ -28,7 +28,7 @@ const page = () => {
     setfilterCategory([])
     }
     // Pagination
-    let [perpage, setPerpage] = useState(6)
+    let [perpage, setPerpage] = useState(12)
     let [currentpage,setCurrentpage] = useState(1)
     let everyPage =  perpage * currentpage;
     let firstPage = everyPage - perpage;
@@ -89,13 +89,17 @@ const page = () => {
         <div className="font-publicSans flex justify-end gap-2 items-center">
           <p className='mx-0 text-lg'>Show :</p>
           <select className='w-20 h-8 px-2 border' onChange={handlePage} name="" id="">
-            <option className='text-lg w-full' value="6">6</option>
-            <option className='text-lg w-full' value="9">9</option>
             <option className='text-lg w-full' value="12">12</option>
+            <option className='text-lg w-full' value="24">24</option>
+            <option className='text-lg w-full' value="36">36</option>
           </select>
         </div>
-        <Products allpage={allpage} filterCategory={filterCategory}/>
-        <Pagination pageNumber={pageNumber} paginate={paginate} prev={prev} next={next} currentpage={currentpage} filterCategory={filterCategory}/>
+        <div className="py-5">
+          <Products allpage={allpage} filterCategory={filterCategory}/>
+        </div>
+        <div className="py-5 pb-20">
+          <Pagination pageNumber={pageNumber} paginate={paginate} prev={prev} next={next} currentpage={currentpage} filterCategory={filterCategory}/>
+        </div>
       </div>
       </Container>
     </div>

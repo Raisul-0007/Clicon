@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import Container from './Container.jsx';
 import { Data } from './ApiData.jsx'
 import Image  from 'next/image';
+import Link from 'next/link.js';
 const Features = () => {
     const {info, loading} =useContext(Data);
     if(loading){
@@ -32,7 +33,9 @@ const Features = () => {
           {
             info.slice(100,108).map((item)=>(
               <div key={item.id} className=" w-1/4 px-4">
-                <Image src={item.thumbnail} alt="" width={200} height={200}/>
+                <Link href="/shop">
+                  <Image src={item.thumbnail} alt="" width={200} height={200}/>
+                </Link>
                 <h2>{item.title}</h2>
                 <p className='font-publicSans text-[#7676768a]'>{item.category}</p>
                 <p className='font-publicSans text-[#2DA5F3]'>${item.price}</p>

@@ -73,15 +73,10 @@ const Category = () => {
                   <Slider {...settings}>
                   {info.map((item)=>(
                 <div key={item.id} className='w-1/4 p-3 relative'>
-                  <div className="relative">
+                  <div className="">
                     <Link href="/shop">
-                    <Image className='w-[100%]' height="200" width='200' src={item.thumbnail} alt="" />
+                    <Image className='w-full' height="200" width='200' src={item.thumbnail} alt="" />
                     </Link>
-                    <div className='absolute bottom-0 right-0 bg-[#ffff] w-55 justify-end opacity-0 hover:opacity-100 ease-in-out duration-300 '>
-                    <h3 className='font-publicSans text-[16px] flex items-center justify-end gap-2 py-2 pr-2 hover:font-bold cursor-pointer '>Add to Wish List < FaHeart/></h3>
-                    <h3 className='font-publicSans text-[16px] flex items-center justify-end gap-2 py-2 pr-2 hover:font-bold cursor-pointer'>Compare<LuRefreshCcw/></h3>
-                    <h3 className='font-publicSans text-[16px] flex items-center justify-end gap-2 py-2 pr-2 hover:font-bold cursor-pointer'>Add to Cart <FaCartShopping/></h3>
-                  </div>
                   <div className="font-publicSans lg:text-[16px] text-[10px] bg-[#262626] text-[#FFFFFF] py-1 lg:px-2 px-1 absolute lg:top-[15px] top-0 lg:left-[15px] left-0">
                     {item.discountPercentage} %
                   </div>

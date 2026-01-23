@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import Container from './Container';
 import Image from 'next/image';
 import { Data } from './ApiData';
+import Link from 'next/link';
 
 
 const HomeProduct = () => {
@@ -29,12 +30,16 @@ const HomeProduct = () => {
             </div>
             <div className="">
                 {info.slice(109,112).map((item)=>(
-                    <div key={item.id} className="flex gap-3 border border-gray-200 my-4 py-2 pr-2">
-                        <Image className='' src={item.thumbnail} alt="" width={70} height={70}/>
+                    <div key={item.id} className=" border border-gray-200 my-4 py-2 pr-2">
+                        <Link className='' href="/shop">
+                        <div className="flex gap-3">
+                            <Image className='' src={item.thumbnail} alt="" width={70} height={70}/>
                         <div className="py-3">
-                            <h2 className='font-publicSans'>{item.title}</h2>
+                            <h2 className='font-publicSans flex flex-wrap'>{item.title}</h2>
                             <p className='font-publicSans text-[#2DA5F3] text-sm pt-1.5'>${item.price}</p>
                         </div>
+                        </div>
+                        </Link>
                     </div>
                 ))}
             </div>
@@ -46,11 +51,15 @@ const HomeProduct = () => {
                 <div className="">
                 {info.slice(113,116).map((item)=>(
                     <div key={item.id} className="flex gap-3 border border-gray-200 my-4 py-2 pr-2">
-                        <Image className='' src={item.thumbnail} alt="" width={70} height={70}/>
+                        <Link className='' href="/shop">
+                        <div className="flex gap-3">
+                            <Image className='' src={item.thumbnail} alt="" width={70} height={70}/>
                         <div className="py-3">
-                            <h2 className='font-publicSans'>{item.title}</h2>
+                            <h2 className='font-publicSans flex flex-wrap'>{item.title}</h2>
                             <p className='font-publicSans text-[#2DA5F3] text-sm pt-1.5'>${item.price}</p>
                         </div>
+                        </div>
+                        </Link>
                     </div>
                 ))}
             </div>
@@ -62,11 +71,15 @@ const HomeProduct = () => {
                 <div className="">
                 {info.slice(121,124).map((item)=>(
                     <div key={item.id} className="flex gap-3 border border-gray-200 my-4 py-2 pr-2">
-                        <Image className='' src={item.thumbnail} alt="" width={70} height={70}/>
+                        <Link className='' href="/shop">
+                        <div className="flex gap-3">
+                            <Image className='' src={item.thumbnail} alt="" width={70} height={70}/>
                         <div className="py-3">
-                            <h2 className='font-publicSans'>{item.title}</h2>
+                            <h2 className='font-publicSans flex flex-wrap'>{item.title}</h2>
                             <p className='font-publicSans text-[#2DA5F3] text-sm pt-1.5'>${item.price}</p>
                         </div>
+                        </div>
+                        </Link>
                     </div>
                 ))}
             </div>
@@ -77,12 +90,14 @@ const HomeProduct = () => {
             </div>
             <div className="">
                 {info.slice(136,139).map((item)=>(
-                    <div key={item.id} className="flex gap-3 border border-gray-200 my-4 py-2 pr-2">
+                    <div key={item.id} className="border border-gray-200 my-4 py-2 pr-2">
+                        <Link className='flex gap-3 ' href="/shop">
                         <Image className='' src={item.thumbnail} alt="" width={70} height={70}/>
                         <div className="py-3">
                             <h2 className='font-publicSans'>{item.title}</h2>
                             <p className='font-publicSans text-[#2DA5F3] text-sm pt-1.5'>${item.price}</p>
                         </div>
+                        </Link>
                     </div>
                 ))}
             </div>
