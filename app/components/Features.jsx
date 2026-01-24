@@ -1,6 +1,6 @@
 "use client"
 import React, { useContext } from 'react'
-import Container from './Container.jsx';
+import Container from './Container';
 import { Data } from './ApiData.jsx'
 import Image  from 'next/image';
 import Link from 'next/link.js';
