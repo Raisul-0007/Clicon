@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import  Image  from 'next/image';
 import Loading from './../../../loading';
+import Rating from '../../../components/Rating';
 
 const ProductDetails = () => {
     const Product  = useParams()
@@ -25,9 +26,23 @@ const ProductDetails = () => {
   return (
     <div>
       <Container>
-        <div className="">
-            <Image src={product.thumbnail} alt='img' height={100} width={300} />
-            <h3>ami{product.title}</h3>
+        <div className="flex">
+          <div className="w-1/2 p-5">
+          <Image className=' border border-gray-300' src={product.thumbnail} alt='img'  height={200} width={600} />
+          </div>
+          <div className="w-1/2 p-5">
+            <div className=" flex items-center gap-3">
+              <div className="flex gap-1  text-[#FA8232]">
+              <Rating rating={product.rating}/>
+              </div>
+              <div className="">
+                {product.rating}
+              </div>
+            </div>
+            <div className="">
+              {product.title}
+            </div>
+          </div>
         </div>
       </Container>
     </div>

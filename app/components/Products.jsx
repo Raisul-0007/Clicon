@@ -1,9 +1,13 @@
 "use client"
 import Image from 'next/image'
 import Link from 'next/link'
+import Loading from './../loading';
 
 const Products = ({filterCategory,allpage}) => {
   let data = filterCategory.length > 0 ? filterCategory : allpage
+    if(!data){
+    return <Loading/>
+  }
   return (
     <div className="flex flex-wrap ">
       {data.map((item)=>(
