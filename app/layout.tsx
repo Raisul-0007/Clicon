@@ -5,7 +5,8 @@ import "slick-carousel/slick/slick-theme.css";
 import { Public_Sans } from "next/font/google";
 import { Geist } from "next/font/google";
 import { ApiData } from "./components/ApiData";
-
+import { Provider } from "react-redux";
+import {store} from "./store"
 const publicSans = Public_Sans({
   subsets: ["latin"],
 });
@@ -32,10 +33,11 @@ export default function RootLayout({
       <body
         className={`${publicSans.className}`}
       >
+        <Provider store={store}>
         <ApiData>
-
         {children}
         </ApiData>
+        </Provider>
       </body>
     </html>
   );
