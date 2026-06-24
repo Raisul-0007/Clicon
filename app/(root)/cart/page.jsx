@@ -1,6 +1,9 @@
+"use client"
 import React from 'react'
 import Container from "../../components/Container"
+import { useSelector } from 'react-redux'
 const page = () => {
+ const cartData = useSelector((state)=> state.cart.cartItem)
   return (
     <div>
     <Container>

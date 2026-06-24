@@ -20,21 +20,21 @@ export const cartSlice = createSlice({
       state.cartItem = filterCart
     },
     increment: (state, action) => {
-      let index = state.cartItem.findIndex((item)=> item.id === item.payload.id)
-      if(index !== 1){
-        state.cartItem[index].qun+1
+      let index = state.cartItem.findIndex((item)=> item.id === action.payload.id)
+      if(index !== -1){
+        state.cartItem[index].qun+=1
       }
     },
     decrement: (state, action) => {
-      let index = state.cartItem.findIndex((item)=> item.id === item.payload.id)
+      let index = state.cartItem.findIndex((item)=> item.id === action.payload.id)
       if(index !== -1 && state.cartItem[index].qun > 1){
-        state.cartItem[index].qun-1
+        state.cartItem[index].qun-=1
       }
     },
   },
 })
 
 
-export const { increment, decrement, incrementByAmount } = cartSlice.actions
+export const { addToCart, removeCart, increment, decrement } = cartSlice.actions
 
 export default cartSlice.reducer

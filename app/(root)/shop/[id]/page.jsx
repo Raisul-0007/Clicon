@@ -6,10 +6,12 @@ import  Image  from 'next/image';
 import Loading from './../../../loading';
 import Rating from '../../../components/Rating';
 import HomeProduct from './../../../components/HomeProduct';
-
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../components/cart/cartSlice'
 const ProductDetails = () => {
     const Product  = useParams()
   const [product, setProduct] = useState(null)
+     let dispatch = useDispatch()
 
   const singleProduct = () => {
     fetch(`https://dummyjson.com/products/${Product.id}`)
@@ -18,7 +20,7 @@ const ProductDetails = () => {
     .catch(err => console.log(err))
   }
   let handleCart =(item)=>{
-    dispatchEvent(addToCart({...item, qun:1}))
+    dispatch(addToCart({...item, qun:1}))
   }
 
   useEffect(() => {
