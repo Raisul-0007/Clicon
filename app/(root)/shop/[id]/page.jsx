@@ -90,7 +90,7 @@ const ProductDetails = () => {
           </div>
         </div>
         <div className="py-10 ">
-          <h5 onClick={()=>handleCart(product)} className='font-publicSans bg-[#FA8232] py-5 text-white text-center rounded-xl'>Add to Cart</h5>
+          <h5 onClick={()=>handleCart(product)} className='font-publicSans bg-[#FA8232] py-5 text-white text-center rounded-xl cursor-pointer'>Add to Cart</h5>
         </div>
         <div className=" py-6 border-2 border-gray-200 px-4 shadow-x">
           <p className='font-publicSans text-sm pb-3 '>100% Guarantee Safe Checkout</p>
