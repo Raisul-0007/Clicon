@@ -8,6 +8,8 @@ import Rating from '../../../components/Rating';
 import HomeProduct from './../../../components/HomeProduct';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../components/cart/cartSlice'
+import { FiMinus, FiPlus } from 'react-icons/fi';
+import { RxCross2 } from 'react-icons/rx';
 const ProductDetails = () => {
     const Product  = useParams()
   const [product, setProduct] = useState(null)
@@ -100,6 +102,32 @@ const ProductDetails = () => {
         </div>
         <div className="py-20">
           <HomeProduct/>
+        </div>
+        <div className="">
+            <div className="flex">
+          <div className="w-2/5 flex gap-5">
+          <div className="border h-5 w-5 cursor-pointer flex items-center justify-center">
+            <RxCross2 />
+          </div>
+            <div className="flex ">
+              <div className="h-15 w-15">
+                <img src={product.thumbnail} alt={product.id} />
+              </div>
+              <h3>{product.title}</h3>
+            </div>
+          </div>
+          <div className="w-1/5">
+            {((product.price - (product.price * product.discountPercentage) / 100)).toFixed(2)}
+          </div>
+          <div className="w-1/5">
+          <div className=""><FiMinus/></div>
+          <div className="">
+            {product.qun}
+          </div>
+          <div className=""><FiPlus/></div>
+          </div>
+          <div className="w-1/5"></div>
+        </div>
         </div>
       </Container>
     </div>
