@@ -2,10 +2,33 @@
 
 import React from 'react'
 import Container from '../../components/Container'
+import { useDispatch, useSelector } from 'react-redux'
+import { decrement, increment, removeCart } from '../../components/cart/cartSlice'
 
 const page = () => {
+  let dispatch = useDispatch()
+  let cartData = useSelector((state)=> state.cart.cartItem)
+  let handleRemove = (item)=>{
+    dispatch(removeCart(item))
+   }
+   let handleIncrement = (item)=>{
+    dispatch(increment(item))
+   }
+   let handleDecrement = (item)=>{
+    dispatch(decrement(item))
+   }
+   let subTotal = cartData.reduce((total, item)=>{
+  return total + (
+    (item.price - (item.price * item.discountPercentage / 100)) * item.qun
+  )
+ }, 0)
+ let savings = cartData.reduce((total, item)=>{
+    return total + ((item.price * item.discountPercentage) / 100) * item.qun
+  },0)
 
-
+  let shipping = 6
+  let tax = (subTotal * 5) / 100
+  let grandTotal = subTotal + shipping + tax
   return (
     <div>
       <Container>
@@ -18,7 +41,6 @@ const page = () => {
   <div className="bg-gray-50 px-4 py-6 md:px-8">
     <div className="max-w-7xl mx-auto">
       <div className="grid gap-y-12 gap-8 lg:grid-cols-2">
-        {/* Delivery Details form */}
         <section className="w-full h-max">
           <form>
             <fieldset>
@@ -156,7 +178,7 @@ const page = () => {
                 </div>
               </div>
             </fieldset>
-            {/* Payment methods */}
+
             <fieldset className="mt-12">
               <legend className="text-xl text-slate-900 font-semibold mb-6">
                 Payment method
@@ -211,7 +233,6 @@ const page = () => {
                 </div>
               </div>
             </fieldset>
-            {/* billing address checkbox */}
             <label className="inline-flex items-center group has-[input:checked]:text-slate-900 mt-6">
               <input
                 id="billing-address"
@@ -221,12 +242,10 @@ const page = () => {
                 className="sr-only"
                 defaultChecked=""
               />
-              {/* Custom box */}
               <span
                 className="flex h-4 w-4 shrink-0 items-center justify-center rounded outline-1 outline-slate-300 bg-white group-has-[input:checked]:bg-blue-600 group-has-[input:checked]:outline-blue-600 group-focus-within:outline-2 group-focus-within:outline-blue-600"
                 aria-hidden="true"
               >
-                {/* Checkmark */}
                 <svg
                   className="size-3 text-white opacity-0 group-has-[input:checked]:opacity-100"
                   viewBox="0 0 12 10"
@@ -246,7 +265,7 @@ const page = () => {
                 type="submit"
                 className="w-full px-3.5 py-2 text-white text-sm font-semibold rounded-md cursor-pointer bg-blue-600 hover:bg-blue-700 border border-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
               >
-                Pay $139.00
+                Pay ${grandTotal.toFixed(2)}
               </button>
             </div>
           </form>
@@ -258,30 +277,31 @@ const page = () => {
           </h2>
           <div className="relative bg-white border border-slate-300 rounded-md">
             <div className="p-6 md:overflow-auto">
-              <div className="space-y-6">
+              {cartData.map((item)=>(
+              <div  key={item.id} className="space-y-6">
                 <div className="flex flex-col gap-4 sm:flex-row">
                   <div className="w-24 h-24 shrink-0 bg-gray-50 p-2 rounded-md">
                     <img
-                      src="https://readymadeui.com/images/product14.webp"
+                      src={item.thumbnail}
                       className="w-full h-full object-contain"
-                      alt="velvet sneaker"
+                      alt={item.id}
                     />
                   </div>
                   <div className="w-full flex justify-between gap-4">
                     <div>
                       <h3 className="text-sm font-semibold text-slate-900">
-                        Velvet Sneaker
+                        {item.title}
                       </h3>
                       <p className="text-sm font-medium text-slate-500 mt-2">
-                        Black/White
+                        {item.category}
                       </p>
                       <p className="text-sm text-slate-900 font-semibold mt-4">
-                        $18.00
+                        ${((item.price - (item.price * item.discountPercentage / 100)) * item.qun).toFixed(2)}
                       </p>
                     </div>
                     <div className="flex flex-col justify-between items-end gap-4">
-                      {/* remove button */}
                       <button
+                        onClick={()=>handleRemove(item)}
                         type="button"
                         aria-label="Remove sunscreen from cart"
                         className="text-red-600 w-max shrink-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
@@ -305,6 +325,7 @@ const page = () => {
                       {/* Quantity Selector */}
                       <div className="flex items-center w-max mt-auto px-2.5 py-1.5 border border-slate-300 text-slate-900 font-medium text-xs rounded-md">
                         <button
+                          onClick={()=>handleDecrement(item)}
                           type="button"
                           aria-label="Decrease quantity"
                           className="cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
@@ -320,8 +341,9 @@ const page = () => {
                             />
                           </svg>
                         </button>
-                        <span className="mx-3">1</span>
+                        <span className="mx-3">{item.qun}</span>
                         <button
+                          onClick={()=>handleIncrement(item)}
                           type="button"
                           aria-label="Increase quantity"
                           className="cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
@@ -342,197 +364,39 @@ const page = () => {
                   </div>
                 </div>
                 <hr className="border-slate-300" />
-                <div className="flex flex-col gap-4 sm:flex-row">
-                  <div className="w-24 h-24 shrink-0 bg-gray-50 p-2 rounded-md">
-                    <img
-                      src="https://readymadeui.com/images/watch5.webp"
-                      className="w-full h-full object-contain"
-                      alt="watch"
-                    />
-                  </div>
-                  <div className="w-full flex justify-between gap-4">
-                    <div>
-                      <h3 className="text-sm font-semibold text-slate-900">
-                        Smart Watch Timex
-                      </h3>
-                      <p className="text-sm font-medium text-slate-500 mt-2">
-                        Gray
-                      </p>
-                      <p className="text-sm text-slate-900 font-semibold mt-4">
-                        $90.00
-                      </p>
-                    </div>
-                    <div className="flex flex-col justify-between items-end gap-4">
-                      {/* remove button */}
-                      <button
-                        type="button"
-                        aria-label="Remove sunscreen from cart"
-                        className="text-red-600 w-max shrink-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="w-4 fill-current inline"
-                          viewBox="0 0 24 24"
-                          aria-hidden="true"
-                        >
-                          <path
-                            d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
-                            data-original="#000000"
-                          />
-                          <path
-                            d="M11 17v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Zm4 0v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Z"
-                            data-original="#000000"
-                          />
-                        </svg>
-                      </button>
-                      {/* Quantity Selector */}
-                      <div className="flex items-center w-max mt-auto px-2.5 py-1.5 border border-slate-300 text-slate-900 font-medium text-xs rounded-md">
-                        <button
-                          type="button"
-                          aria-label="Decrease quantity"
-                          className="cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-2.5 fill-current"
-                            viewBox="0 0 124 124"
-                          >
-                            <path
-                              d="M112 50H12C5.4 50 0 55.4 0 62s5.4 12 12 12h100c6.6 0 12-5.4 12-12s-5.4-12-12-12z"
-                              data-original="#000000"
-                            />
-                          </svg>
-                        </button>
-                        <span className="mx-3">1</span>
-                        <button
-                          type="button"
-                          aria-label="Increase quantity"
-                          className="cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-2.5 fill-current"
-                            viewBox="0 0 42 42"
-                          >
-                            <path
-                              d="M37.059 16H26V4.941C26 2.224 23.718 0 21 0s-5 2.224-5 4.941V16H4.941C2.224 16 0 18.282 0 21s2.224 5 4.941 5H16v11.059C16 39.776 18.282 42 21 42s5-2.224 5-4.941V26h11.059C39.776 26 42 23.718 42 21s-2.224-5-4.941-5z"
-                              data-original="#000000"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <hr className="border-slate-300" />
-                <div className="flex flex-col gap-4 sm:flex-row">
-                  <div className="w-24 h-24 shrink-0 bg-gray-50 p-2 rounded-md">
-                    <img
-                      src="https://readymadeui.com/images/dark-green-tshirt-2.webp"
-                      className="w-full h-full object-contain"
-                      alt="dark green tshirt"
-                    />
-                  </div>
-                  <div className="w-full flex justify-between gap-4">
-                    <div>
-                      <h3 className="text-sm font-semibold text-slate-900">
-                        T-shirt
-                      </h3>
-                      <p className="text-sm font-medium text-slate-500 mt-2">
-                        Dark Green
-                      </p>
-                      <p className="text-sm text-slate-900 font-semibold mt-4">
-                        $20.00
-                      </p>
-                    </div>
-                    <div className="flex flex-col justify-between items-end gap-4">
-                      {/* remove button */}
-                      <button
-                        type="button"
-                        aria-label="Remove sunscreen from cart"
-                        className="text-red-600 w-max shrink-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="w-4 fill-current inline"
-                          viewBox="0 0 24 24"
-                          aria-hidden="true"
-                        >
-                          <path
-                            d="M19 7a1 1 0 0 0-1 1v11.191A1.92 1.92 0 0 1 15.99 21H8.01A1.92 1.92 0 0 1 6 19.191V8a1 1 0 0 0-2 0v11.191A3.918 3.918 0 0 0 8.01 23h7.98A3.918 3.918 0 0 0 20 19.191V8a1 1 0 0 0-1-1Zm1-3h-4V2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2H4a1 1 0 0 0 0 2h16a1 1 0 0 0 0-2ZM10 4V3h4v1Z"
-                            data-original="#000000"
-                          />
-                          <path
-                            d="M11 17v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Zm4 0v-7a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0Z"
-                            data-original="#000000"
-                          />
-                        </svg>
-                      </button>
-                      <div className="flex items-center w-max mt-auto px-2.5 py-1.5 border border-slate-300 text-slate-900 font-medium text-xs rounded-md">
-                        <button
-                          type="button"
-                          aria-label="Decrease quantity"
-                          className="cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-2.5 fill-current"
-                            viewBox="0 0 124 124"
-                            aria-hidden="true"
-                          >
-                            <path
-                              d="M112 50H12C5.4 50 0 55.4 0 62s5.4 12 12 12h100c6.6 0 12-5.4 12-12s-5.4-12-12-12z"
-                              data-original="#000000"
-                            />
-                          </svg>
-                        </button>
-                        <span className="mx-3">1</span>
-                        <button
-                          type="button"
-                          aria-label="Increase quantity"
-                          className="cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="w-2.5 fill-current"
-                            viewBox="0 0 42 42"
-                            aria-hidden="true"
-                          >
-                            <path
-                              d="M37.059 16H26V4.941C26 2.224 23.718 0 21 0s-5 2.224-5 4.941V16H4.941C2.224 16 0 18.282 0 21s2.224 5 4.941 5H16v11.059C16 39.776 18.282 42 21 42s5-2.224 5-4.941V26h11.059C39.776 26 42 23.718 42 21s-2.224-5-4.941-5z"
-                              data-original="#000000"
-                            />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
-              <hr className="border-slate-300 my-6" />
+              ))
+}
               <div>
                 <ul className="text-slate-500 font-medium space-y-4">
                   <li className="flex flex-wrap gap-4 text-sm">
-                    Subtotal{" "}
+                    Subtotal
                     <span className="ml-auto font-semibold text-slate-900">
-                      $128.00
+                      ${subTotal.toFixed(2)}
                     </span>
                   </li>
                   <li className="flex flex-wrap gap-4 text-sm">
-                    Shipping{" "}
+                    Savings
+                    <span className="ml-auto font-semibold text-slate-900">
+                      ${savings.toFixed(2)}
+                    </span>
+                  </li>
+                  <li className="flex flex-wrap gap-4 text-sm">
+                    Shipping
                     <span className="ml-auto font-semibold text-slate-900">
                       $6.00
                     </span>
                   </li>
                   <li className="flex flex-wrap gap-4 text-sm">
-                    Tax{" "}
+                    Tax
                     <span className="ml-auto font-semibold text-slate-900">
-                      $5.00
+                      ${tax.toFixed(2)}
                     </span>
                   </li>
                   <hr className="border-slate-300" />
                   <li className="flex flex-wrap gap-4 text-sm font-semibold text-slate-900">
-                    Total <span className="ml-auto">$139.00</span>
+                    Total 
+                    <span className="ml-auto">$ {grandTotal.toFixed(2)}</span>
                   </li>
                 </ul>
               </div>
