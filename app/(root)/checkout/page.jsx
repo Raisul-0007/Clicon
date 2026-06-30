@@ -292,8 +292,8 @@ const page = () => {
                       <h3 className="text-sm font-semibold text-slate-900">
                         {item.title}
                       </h3>
-                      <p className="text-sm font-medium text-slate-500 mt-2">
-                        {item.category}
+                      <p className="text-sm font-medium text-slate-500 mt-2 uppercase">
+                        {item.brand}
                       </p>
                       <p className="text-sm text-slate-900 font-semibold mt-4">
                         ${((item.price - (item.price * item.discountPercentage / 100)) * item.qun).toFixed(2)}

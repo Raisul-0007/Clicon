@@ -94,7 +94,7 @@ const page = () => {
       <div className="">
       {cartData.length > 0 &&(
               <div className=" border ml-auto lg:w-1/5 w-1/3 my-8 flex items-center rounded-2xl">
-                    <div className="py-2 w-3/5 text-center border-r lg:text-xl text-[12px]  bg-[#1b6392] rounded-l-2xl">
+                    <div className="py-2 w-3/5 text-center border-r lg:text-xl text-[12px] text-white  bg-[#1b6392] rounded-l-2xl">
                         Grand Total :
                     </div>
                     <div className="lg:text-[18px] text-[10px] w-2/5 py-2 text-center">
