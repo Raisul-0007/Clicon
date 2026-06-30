@@ -189,7 +189,7 @@ const page = () => {
                     type="radio"
                     name="method"
                     id="card"
-                    className="w-[18px] h-[18px] appearance-none rounded-full border border-slate-300 bg-white focus:outline-blue-500 checked:ring-2 checked:ring-inset checked:ring-white checked:bg-blue-600"
+                    className="w-4.5 h-4.5 appearance-none rounded-full border border-slate-300 bg-white focus:outline-blue-500 checked:ring-2 checked:ring-inset checked:ring-white checked:bg-blue-600"
                     defaultChecked=""
                   />
                   <label
@@ -218,7 +218,7 @@ const page = () => {
                     type="radio"
                     name="method"
                     id="paypal"
-                    className="w-[18px] h-[18px] appearance-none rounded-full border border-slate-300 bg-white focus:outline-blue-500 checked:ring-2 checked:ring-inset checked:ring-white checked:bg-blue-600"
+                    className="w-4.5 h-4.5 appearance-none rounded-full border border-slate-300 bg-white focus:outline-blue-500 checked:ring-2 checked:ring-inset checked:ring-white checked:bg-blue-600"
                   />
                   <label
                     htmlFor="paypal"

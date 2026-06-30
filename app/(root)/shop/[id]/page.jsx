@@ -103,9 +103,6 @@ const ProductDetails = () => {
         <div className="py-20">
           <HomeProduct/>
         </div>
-        <div className="">
-           
-        </div>
       </Container>
     </div>
   )
