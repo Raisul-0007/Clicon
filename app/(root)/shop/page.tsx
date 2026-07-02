@@ -65,7 +65,11 @@ const page = () => {
     }
   return (
     <div>
-      <Container className="flex gap-5">
+      <Container className="">
+        <div className="py-20">
+          <h2 className='font-bold text-4xl'>Shop</h2>
+        </div>
+        <div className="flex gap-5">
         <div className="w-1/4">
         <div className="">
           <div onClick={(()=> cateShow(!cate))} className="flex justify-between items-center gap-2">
@@ -139,6 +143,7 @@ const page = () => {
         <div className="py-5 pb-20">
           <Pagination pageNumber={pageNumber} paginate={paginate} prev={prev} next={next} currentpage={currentpage} filterCategory={filterCategory}/>
         </div>
+      </div>
       </div>
       </Container>
     </div>
