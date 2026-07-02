@@ -16,7 +16,7 @@ const Header = () => {
         <h4 className="font-publicSans text-md text-white">OFF</h4>
       </div>
       <div className="">
-       <Link href="#" className='bg-[#EBC80C] uppercase flex gap-2 items-center px-4 py-3'>Shop Now <BsArrowRight/></Link> 
+       <Link href="/shop" className='bg-[#EBC80C] uppercase flex gap-2 items-center px-4 py-3'>Shop Now <BsArrowRight/></Link> 
       </div>
       </Container>
     </div>

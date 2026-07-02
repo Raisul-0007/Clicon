@@ -13,21 +13,30 @@ const page = () => {
    },[])
 
     let {info} = useContext(Data)
-    let [cate, cateShow] = useState(true)
+    let [cate, cateShow] = useState(false)
+    let [brandShow, brandSetShow] = useState(false)
     let [category, setCategory] = useState<any[]>([])
+    let [brand, setBrand] = useState<any[]>([])
     let [filterCategory, setfilterCategory] = useState<any[]>([])
-
     useEffect(()=>{
       setCategory([...new Set( info.map((item : any)=>item.category))])
     },[info])
+    useEffect(()=>{
+      setBrand([...new Set(info.map((item: any)=> item.brand))])
+    },[info])
+
     let handleCategory =(cItem : any)=>{
       let filterItem = info.filter((item : any)=> item.category == cItem)
       setfilterCategory(filterItem)
     }
+    let handleBrand = (bItem:any)=>{
+      let brandItem = info.filter((item:any)=> item.brand == bItem)
+      setfilterCategory(brandItem)
+    }
     let handleAllProduct = ()=> {
     setfilterCategory([])
     }
-    // Pagination
+
     let [perpage, setPerpage] = useState(12)
     let [currentpage,setCurrentpage] = useState(1)
     let everyPage =  perpage * currentpage;
@@ -58,6 +67,7 @@ const page = () => {
     <div>
       <Container className="flex gap-5">
         <div className="w-1/4">
+        <div className="">
           <div onClick={(()=> cateShow(!cate))} className="flex justify-between items-center gap-2">
           <h2 className='font-publicSans text-3xl py-5'>Category</h2>
         <div className="text-3xl">
@@ -84,6 +94,35 @@ const page = () => {
           ))}
         </ul>
        )}
+        </div>
+        <div className="">
+          <div onClick={(()=> brandSetShow(!brandShow))} className="flex justify-between items-center gap-2">
+          <h2 className='font-publicSans text-3xl py-5'>Brand</h2>
+        <div className="text-3xl">
+        {brandShow ? <MdArrowDropUp/> : <MdArrowDropDown/>}
+        </div>
+        </div>
+        {brandShow && (
+         <ul>
+          <li onClick={handleAllProduct} className='font-publicSans text-[18px]  text-gray-600 flex justify-between items-center py-0.5 hover:text-black cursor-pointer'>
+            All Prodructs 
+            <div className="p-1">
+              <AiOutlinePlus/>
+            </div>
+          </li>
+          {brand.map((item, index)=>(
+          <li key={index} onClick={()=>handleBrand(item)} >
+             <div className='font-publicSans text-[18px] text-gray-600 flex justify-between items-center py-1 hover:text-black cursor-pointer'>
+                {item}
+                <div className="p-1">
+                  <AiOutlinePlus/>
+                </div>
+                </div>
+          </li>
+          ))}
+        </ul>
+       )}
+       </div>
         </div>
       <div className="w-3/4">
         <div className="font-publicSans flex justify-end gap-2 items-center">
