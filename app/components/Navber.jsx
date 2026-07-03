@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Container from './Container'
 import Image  from 'next/image';
 import { IoSearch } from 'react-icons/io5';
@@ -7,8 +7,11 @@ import { LuShoppingCart } from 'react-icons/lu';
 import { FaRegHeart, FaUser } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
+import { Data } from './ApiData';
 const Navber = () => {
+  let searchRef = useRef()
+  let {info} = useContext(Data)
   const router = useRouter();
   let addToCart = useSelector((state)=> state.cart.cartItem)
   let [filter, setFilter] = useState([])
@@ -23,9 +26,21 @@ const Navber = () => {
     }
   }
   let handleProduct= (id)=>{
-    router(`/shop/${id}`)
-     window.location.reload()
+    router.push(`/shop/${id}`)
+    setSearch(false)
   }
+
+  useEffect(()=>{
+    const handleClick = (e)=>{
+      if(searchRef.current && !searchRef.current.contains(e.target)){
+        setSearch(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClick)
+    return ()=>{
+       document.removeEventListener("mousedown", handleClick)
+    }
+  },[])
   return (
     <div className='bg-[#1B6392] py-2'>
       <Container className="flex items-center">
@@ -34,10 +49,22 @@ const Navber = () => {
             <Image src="/Logo.png" alt="logo" height="100" width="180" />
             </Link>
           </div>
-          <div className="w-3/5 relative py-2">
-            <input type='text' className='bg-white pl-5 py-4 w-full' placeholder='Search for anything...' /> 
+          <div ref={searchRef} className="w-3/5 relative">
+            <div className=" relative py-2">
+            <input onChange={handleSearch} type='text' className='bg-white pl-5 py-4 w-full border-b ' placeholder='Search for anything...' /> 
               <IoSearch className="absolute right-5 top-6 text-2xl" />       
             </div>
+            {search && (
+              <div className="bg-white w-full absolute top-[65px] left-0 z-999 h-120 overflow-y-auto">
+                {filter.map((item)=>(
+                  <Link key={item.id} onClick={()=>handleProduct(item.id)} href={`/shop/${item.id}`} className='py-2 flex items-center border-b border-[#e2e2e2] px-5 gap-4 '>
+                    <Image width={50} height={50} src={item.thumbnail} alt={item.id} />
+                    <h5 className=''>{item.title}</h5>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
           <div className="w-1/5 flex gap-5 justify-end text-white text-4xl">
           <Link href="/cart">
           <div className="relative">
