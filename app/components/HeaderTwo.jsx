@@ -7,12 +7,12 @@ const HeaderTwo = () => {
   return (
     <div className='bg-[#1B6392] border-b border-gray-300'>
       <Container>
-        <div className=" py-4 flex justify-between">
+        <div className=" py-4 flex items-center justify-between">
           <div className="">
-            <p className='font-publicSans text-sm text-white'>Welcome to Clicon online eCommerce store. </p>
+            <p className='font-publicSans md:text-sm text-[8px] text-white'>Welcome to Clicon online eCommerce store. </p>
           </div>
-          <div className="flex gap-3 text-white">
-            <p className='font-publicSans text-sm text-white'>Follow us:</p>
+          <div className="flex items-center gap-3 text-white md:text-[16px] text-sm ">
+            <p className='font-publicSans text-white md:text-sm text-[8px] '>Follow us:</p>
             <Link href="/"><FaTwitter /></Link>
             <Link href="/"><FaFacebook /></Link>
             <Link href="/"><BiLogoPinterestAlt /></Link>
