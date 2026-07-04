@@ -24,7 +24,7 @@ const HomeProduct = () => {
   return (
     <div>
       <Container className="flex flex-wrap">
-        <div className="md:w-1/4 w-[70%] px-2.5">
+        <div className="md:w-1/4 w-full px-2.5 py-5">
             <div className="">
                 <h4 className='font-publicSans text-[18px] font-semibold'>FLASH SALE TODAY</h4>
             </div>
@@ -44,7 +44,7 @@ const HomeProduct = () => {
                 ))}
             </div>
         </div>
-        <div className="md:w-1/4 w-[70%] px-2.5">
+        <div className="md:w-1/4 w-full px-2.5 py-5">
             <div className="">
                 <h4 className='font-publicSans text-[18px] font-semibold'>BEST SELLERS</h4>
             </div>
@@ -64,7 +64,7 @@ const HomeProduct = () => {
                 ))}
             </div>
         </div>
-        <div className="md:w-1/4 w-[70%] px-2.5">
+        <div className="md:w-1/4 w-full px-2.5 py-5">
             <div className="">
                 <h4 className='font-publicSans text-[18px] font-semibold'>TOP RATED</h4>
             </div>
@@ -84,7 +84,7 @@ const HomeProduct = () => {
                 ))}
             </div>
         </div>
-        <div className="md:w-1/4 w-[70%] px-2.5">
+        <div className="md:w-1/4 w-full px-2.5 py-5">
             <div className="">
                 <h4 className='font-publicSans text-[18px] font-semibold'>NEW ARRIVALS</h4>
             </div>
