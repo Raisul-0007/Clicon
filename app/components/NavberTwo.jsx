@@ -6,7 +6,7 @@ import { AiOutlineCustomerService } from 'react-icons/ai';
 
 const NavberTwo = () => {
   return (
-    <div className='border-b border-[#5F6C72] py-3'>
+    <div className='border-b border-[#5F6C72] py-3 md:block hidden'>
       <Container>
         <div className="">
           <ul className=' flex '>
