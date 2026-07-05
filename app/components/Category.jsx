@@ -10,6 +10,8 @@ import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import Image  from 'next/image';
 import Link from 'next/link';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function SampleNextArrow(props) {
   const { onClick } = props;
@@ -44,22 +46,27 @@ const Category = () => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          infinite: true,
-        }
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-        }
-      }
+       {
+    breakpoint: 1024,
+    settings: {
+      slidesToShow: 3,
+      slidesToScroll: 2,
+    },
+  },
+  {
+    breakpoint: 768,
+    settings: {
+      slidesToShow: 2,
+      slidesToScroll: 1,
+    },
+  },
+  {
+    breakpoint: 480,
+    settings: {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    },
+  },
     ]
   }
   
@@ -72,7 +79,7 @@ const Category = () => {
                 <div >
                   <Slider {...settings}>
                   {info.map((item)=>(
-                <div key={item.id} className='w-1/4 p-3 relative'>
+                <div key={item.id} className=' p-3 relative'>
                   <div className="">
                     <Link href="/shop">
                     <Image className='w-full' height="200" width='200' src={item.thumbnail} alt="" />

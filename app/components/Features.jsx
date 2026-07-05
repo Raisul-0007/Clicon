@@ -21,24 +21,24 @@ const Features = () => {
     }
   return (
     <div>
-      <Container className="flex gap-4">
-        <div className="w-1/4">
-          <Image src="/Feature.png" alt="fet" width={300} height={700}/>
+      <Container className="lg:flex gap-4">
+        <div className="lg:w-1/4 ">
+          <Image className='mx-auto w-full' src="/Feature.png" alt="fet" width={300} height={700}/>
         </div>
-        <div className="w-4/5">
+        <div className="lg:w-4/5">
           <div className="">
             <h4 className='font-publicSans text-4xl font-semibold pb-10'>Features Products</h4>
           </div>
           <div className="flex flex-wrap">
           {
             info.slice(100,108).map((item)=>(
-              <div key={item.id} className=" w-1/4 px-4">
+              <div key={item.id} className=" lg:w-1/4 w-1/2  px-4 lg:py-0 py-5">
                 <Link href="/shop">
                   <Image src={item.thumbnail} alt="" width={200} height={200}/>
                 </Link>
-                <h2>{item.title}</h2>
+                <h2 className='lg:text-lg text-[15px]'>{item.title}</h2>
                 <p className='font-publicSans text-[#7676768a]'>{item.category}</p>
-                <p className='font-publicSans text-[#2DA5F3]'>${item.price}</p>
+                <p className='font-publicSans text-[#2DA5F3] lg:text-[16px] text-[12px]'>${item.price}</p>
               </div>
             ))
           }
