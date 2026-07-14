@@ -69,18 +69,18 @@ const page = () => {
         <div className="py-20">
           <h2 className='font-bold text-4xl'>Shop</h2>
         </div>
-        <div className="flex gap-5">
+        <div className="flex lg:gap-5">
         <div className="w-1/4">
         <div className="">
-          <div onClick={(()=> cateShow(!cate))} className="flex justify-between items-center gap-2">
-          <h2 className='font-publicSans text-3xl py-5'>Category</h2>
-        <div className="text-3xl">
+          <div onClick={(()=> cateShow(!cate))} className="flex justify-between items-center">
+          <h2 className='font-publicSans lg:text-3xl py-5'>Category</h2>
+        <div className="lg:text-3xl">
         {cate ? <MdArrowDropUp/> : <MdArrowDropDown/>}
         </div>
         </div>
        {cate && (
          <ul>
-          <li onClick={handleAllProduct} className='font-publicSans text-[18px]  text-gray-600 flex justify-between items-center py-0.5 hover:text-black cursor-pointer'>
+          <li onClick={handleAllProduct} className='font-publicSans lg:text-[18px] text-[12px]  text-gray-600 flex justify-between items-center py-0.5 hover:text-black cursor-pointer'>
             All Prodructs 
             <div className="p-1">
               <AiOutlinePlus/>
@@ -88,7 +88,7 @@ const page = () => {
           </li>
           {category.map((item, index)=>(
           <li key={index} onClick={()=>handleCategory(item)} >
-             <div className='font-publicSans text-[18px] text-gray-600 flex justify-between items-center py-1 hover:text-black cursor-pointer'>
+             <div className='font-publicSans lg:text-[18px] text-[12px] text-gray-600 flex justify-between items-center py-1 hover:text-black cursor-pointer'>
                 {item}
                 <div className="p-1">
                   <AiOutlinePlus/>
@@ -100,15 +100,15 @@ const page = () => {
        )}
         </div>
         <div className="">
-          <div onClick={(()=> brandSetShow(!brandShow))} className="flex justify-between items-center gap-2">
-          <h2 className='font-publicSans text-3xl py-5'>Brand</h2>
-        <div className="text-3xl">
+          <div onClick={(()=> brandSetShow(!brandShow))} className="flex justify-between items-center">
+          <h2 className='font-publicSans lg:text-3xl py-5'>Brand</h2>
+        <div className="lg:text-3xl">
         {brandShow ? <MdArrowDropUp/> : <MdArrowDropDown/>}
         </div>
         </div>
         {brandShow && (
          <ul>
-          <li onClick={handleAllProduct} className='font-publicSans text-[18px]  text-gray-600 flex justify-between items-center py-0.5 hover:text-black cursor-pointer'>
+          <li onClick={handleAllProduct} className='font-publicSans lg:text-[18px] text-[12px]  text-gray-600 flex justify-between items-center py-0.5 hover:text-black cursor-pointer'>
             All Prodructs 
             <div className="p-1">
               <AiOutlinePlus/>
@@ -116,7 +116,7 @@ const page = () => {
           </li>
           {brand.map((item, index)=>(
           <li key={index} onClick={()=>handleBrand(item)} >
-             <div className='font-publicSans text-[18px] text-gray-600 flex justify-between items-center py-1 hover:text-black cursor-pointer'>
+             <div className='font-publicSans lg:text-[18px] text-[12px] text-gray-600 flex justify-between items-center py-1 hover:text-black cursor-pointer'>
                 {item}
                 <div className="p-1">
                   <AiOutlinePlus/>
@@ -130,11 +130,11 @@ const page = () => {
         </div>
       <div className="w-3/4">
         <div className="font-publicSans flex justify-end gap-2 items-center">
-          <p className='mx-0 text-lg'>Show :</p>
-          <select className='w-20 h-8 px-2 border' onChange={handlePage} name="" id="">
-            <option className='text-lg w-full' value="12">12</option>
-            <option className='text-lg w-full' value="24">24</option>
-            <option className='text-lg w-full' value="36">36</option>
+          <p className='mx-0 lg:text-lg text-[12px]'>Show :</p>
+          <select className='lg:w-20 h-8 px-2 border lg:text-[16px] text-[12px]' onChange={handlePage} name="" id="">
+            <option className='lg:text-lg text-[12px] w-full' value="12">12</option>
+            <option className='lg:text-lg text-[12px] w-full' value="24">24</option>
+            <option className='lg:text-lg w-full text-[12px]' value="36">36</option>
           </select>
         </div>
         <div className="py-5">
