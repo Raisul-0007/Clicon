@@ -51,8 +51,8 @@ const Navber = () => {
           </div>
           <div ref={searchRef} className="w-3/5 relative">
             <div className=" relative py-2">
-            <input onChange={handleSearch} type='text' className='bg-white pl-5 lg:py-4 py-1.5 w-full border-b ' placeholder='Search for anything...' /> 
-              <IoSearch className="absolute lg:right-5 right-2 lg:top-6 top-5 lg:text-2xl" />       
+            <input onChange={handleSearch} type='text' className='bg-white pl-5 lg:py-4 py-1.5 w-full border-b lg:text-[16px] text-[12px]' placeholder='Search for anything...' /> 
+              <IoSearch className="absolute lg:right-5 right-2 lg:top-6 top-4 lg:text-2xl" />       
             </div>
             {search && (
               <div className="bg-white w-full absolute lg:top-[65px] top-11.25 left-0 z-999 h-120 overflow-y-auto">

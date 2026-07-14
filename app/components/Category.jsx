@@ -17,7 +17,7 @@ function SampleNextArrow(props) {
   const { onClick } = props;
   return (
     <div
-      className="absolute right-[5px] top-[15%] lg:top-[40%] z-100 p-[15px] rounded-full bg-[rgba(151,151,151,0.4)] cursor-pointer"
+      className="absolute right-1.25 top-[40%] z-100 p-3.75 rounded-full bg-[rgba(151,151,151,0.4)] cursor-pointer"
       onClick={onClick}
     ><FaArrowRight /></div>
   );
@@ -27,7 +27,7 @@ function SamplePrevArrow(props) {
   const { className, style, onClick } = props;
   return (
     <div
-      className='absolute left-[5px] top-[15%] lg:top-[40%] z-100 p-[15px] rounded-full bg-[rgba(151,151,151,0.4)] cursor-pointer'
+      className='absolute left-1.25 top-[40%] z-100 p-3.75 rounded-full bg-[rgba(151,151,151,0.4)] cursor-pointer'
       onClick={onClick}
     ><FaArrowLeft /></div>
   );
@@ -63,7 +63,7 @@ const Category = () => {
   {
     breakpoint: 480,
     settings: {
-      slidesToShow: 1,
+      slidesToShow: 2,
       slidesToScroll: 1,
     },
   },
@@ -71,7 +71,7 @@ const Category = () => {
   }
   
   return (
-    <div className='lg:pb-[50px] lg:pt-[30px]'>
+    <div className='py-13'>
         <Container>
               
                 <div className="">
@@ -84,7 +84,7 @@ const Category = () => {
                     <Link href="/shop">
                     <Image className='w-full' height="200" width='200' src={item.thumbnail} alt="" />
                     </Link>
-                  <div className="font-publicSans lg:text-[16px] text-[10px] bg-[#262626] text-[#FFFFFF] py-1 lg:px-2 px-1 absolute lg:top-[15px] top-0 lg:left-[15px] left-0">
+                  <div className="font-publicSans lg:text-[16px] text-[10px] bg-[#262626] text-[#FFFFFF] py-1  px-2 absolute lg:top-[15px] top-0 lg:left-[15px] left-0">
                     {item.discountPercentage} %
                   </div>
                   </div>
