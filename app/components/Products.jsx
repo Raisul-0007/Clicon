@@ -11,7 +11,7 @@ const Products = ({filterCategory,allpage}) => {
   return (
     <div className="flex flex-wrap ">
       {data.map((item)=>(
-      <div key={item.id} className='w-1/4 p-3 relative'>
+      <div key={item.id} className='lg:w-1/4 w-1/2 p-3 relative'>
         <div className="relative">
           <Link href={`/shop/${item.id}`}>
             <Image className='w-[100%]' height="200" width='200' src={item.thumbnail} alt="" />
