@@ -15,8 +15,11 @@ const page = () => {
     let {info} = useContext(Data)
     let [cate, cateShow] = useState(false)
     let [brandShow, brandSetShow] = useState(false)
+    let [priceShow, setPriceShow] = useState(false)
     let [category, setCategory] = useState<any[]>([])
     let [brand, setBrand] = useState<any[]>([])
+    let [low, setLow ] = useState()
+    let [high, setHigh ] = useState()
     let [filterCategory, setfilterCategory] = useState<any[]>([])
     useEffect(()=>{
       setCategory([...new Set( info.map((item : any)=>item.category))])
@@ -62,6 +65,12 @@ const page = () => {
     }
     let handlePage=(e : any)=>{
       setPerpage(e.target.value)
+    }
+    let handlePrice = (value: any)=>{
+      setLow(value.low)
+      setHigh(value.high)
+      let priceFilter = info.filter(((item: any)=> item.price > value.low && item.price < value.high))
+      setfilterCategory(priceFilter)
     }
   return (
     <div>
@@ -126,6 +135,58 @@ const page = () => {
           ))}
         </ul>
        )}
+       </div>
+       <div className="">
+        <div className="flex justify-between items-center">
+          <h3 className="">Price</h3>
+          <div onClick={(()=> setPriceShow(!priceShow))} className="lg:text-3xl">
+        {priceShow ? <MdArrowDropUp/> : <MdArrowDropDown/>}
+        </div>
+        </div>
+        <div className="">
+          {priceShow && (
+            <ul >
+              <li onClick={handleAllProduct} className='font-publicSans lg:text-[18px] text-[12px]  text-gray-600 flex justify-between items-center py-0.5 hover:text-black cursor-pointer'>
+                All Prodructs 
+            <div className="p-1">
+              <AiOutlinePlus/>
+            </div>
+              </li>
+            <li >
+             <div onClick={()=> handlePrice({low:0, high:100})}  className='font-publicSans lg:text-[18px] text-[12px] text-gray-600 flex justify-between items-center py-1 hover:text-black cursor-pointer'>
+                $0-$100
+                <div className="p-1">
+                  <AiOutlinePlus/>
+                </div>
+                </div>
+            </li>
+             <li >
+             <div onClick={()=> handlePrice({low:101, high:1000})} className='font-publicSans lg:text-[18px] text-[12px] text-gray-600 flex justify-between items-center py-1 hover:text-black cursor-pointer'>
+              $101-$1000
+                <div className="p-1">
+                  <AiOutlinePlus/>
+                </div>
+                </div>
+            </li>
+             <li >
+             <div onClick={()=> handlePrice({low:1001, high:10000})} className='font-publicSans lg:text-[18px] text-[12px] text-gray-600 flex justify-between items-center py-1 hover:text-black cursor-pointer'>
+              $1001-$10000
+                <div className="p-1">
+                  <AiOutlinePlus/>
+                </div>
+                </div>
+            </li>
+             <li >
+             <div onClick={()=> handlePrice({low:10001})} className='font-publicSans lg:text-[18px] text-[12px] text-gray-600 flex justify-between items-center py-1 hover:text-black cursor-pointer'>
+               10000+
+                <div className="p-1">
+                  <AiOutlinePlus/>
+                </div>
+                </div>
+            </li>
+            </ul>
+          )}
+        </div>
        </div>
         </div>
       <div className="w-3/4">
