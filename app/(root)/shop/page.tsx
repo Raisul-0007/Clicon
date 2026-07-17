@@ -137,9 +137,9 @@ const page = () => {
        )}
        </div>
        <div className="">
-        <div className="flex justify-between items-center">
+        <div onClick={(()=> setPriceShow(!priceShow))}  className="flex justify-between items-center">
           <h3 className="">Price</h3>
-          <div onClick={(()=> setPriceShow(!priceShow))} className="lg:text-3xl">
+          <div className="lg:text-3xl">
         {priceShow ? <MdArrowDropUp/> : <MdArrowDropDown/>}
         </div>
         </div>
@@ -177,7 +177,7 @@ const page = () => {
                 </div>
             </li>
              <li >
-             <div onClick={()=> handlePrice({low:10001})} className='font-publicSans lg:text-[18px] text-[12px] text-gray-600 flex justify-between items-center py-1 hover:text-black cursor-pointer'>
+             <div onClick={()=> handlePrice({low:10001, high: 100000})} className='font-publicSans lg:text-[18px] text-[12px] text-gray-600 flex justify-between items-center py-1 hover:text-black cursor-pointer'>
                10000+
                 <div className="p-1">
                   <AiOutlinePlus/>

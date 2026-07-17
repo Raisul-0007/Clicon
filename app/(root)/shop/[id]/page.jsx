@@ -36,17 +36,17 @@ const ProductDetails = () => {
   return (
     <div>
       <Container>
-        <div className="flex">
-          <div className="w-1/2 relative h-120 p-5">
+        <div className="lg:flex">
+          <div className="lg:w-1/2 relative h-120 p-5">
           <Image className=' border border-gray-300 px-10' src={product.thumbnail} alt='img'  fill />
           </div>
-          <div className="w-1/2 p-5">
+          <div className="lg:w-1/2 p-5">
 
             <div className=" flex items-center gap-3">
-              <div className="flex gap-1  text-[#FA8232]">
+              <div className="flex gap-1  text-[#FA8232] lg:text-[16px] text-[14px]">
               <Rating rating={product.rating}/>
               </div>
-              <div className="">
+              <div className="lg:text-[16px] text-[14px]">
                 {product.rating}
               </div>
             </div>
@@ -55,22 +55,22 @@ const ProductDetails = () => {
             </div>
             <div className="py-6">
             <div className="">
-              <div className="flex justify-between py-1">
-                <div className="flex gap-2">
+              <div className="lg:flex justify-between py-1 ">
+                <div className="flex gap-2 lg:py-0 py-1">
                   <p className='font-publicSans text-gray-600'>Sku:</p>
                   <h6 className='font-publicSans'>{product.sku}</h6>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 lg:py-0 py-1">
                   <p className='font-publicSans text-gray-600'>Availability:</p>
                   <h6 className='font-publicSans text-[#2DB224]'>{product.availabilityStatus}</h6>
                 </div>
               </div>
-              <div className="flex justify-between">
-                <div className="flex gap-2">
+              <div className="lg:flex justify-between">
+                <div className="flex gap-2 lg:py-0 py-1">
                   <p className='font-publicSans text-gray-600'>Brand:</p>
                   <h6 className='font-publicSans'>{product.brand}</h6>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 lg:py-0 py-1">
                   <p className='font-publicSans text-gray-600'>Category:</p>
                   <h6 className='font-publicSans'>{product.category}</h6>
                 </div>
@@ -82,17 +82,17 @@ const ProductDetails = () => {
             </div>
             <div className="flex gap-2 items-center">
           <div className="">
-           <h4 className='font-publicSans text-2xl text-[#2DA5F3]'>{mainPrice.toFixed(2)}</h4> 
+           <h4 className='font-publicSans lg:text-2xl text-[#2DA5F3]'>{mainPrice.toFixed(2)}</h4> 
           </div>
-          <div className="font-publicSans text-[18px] text-[#77878F]">
+          <div className="font-publicSans lg:text-[18px] text-[14px] text-[#77878F]">
             <del>{product.price}</del>
           </div>
           <div className="bg-[#EFD33D] hover:bg-white hover:text-black py-2 px-4 rounded">
-            <h5 className='font-publicSans text-sm'>{product.discountPercentage}% OFF</h5>
+            <h5 className='font-publicSans lg:text-sm text-[12px]'>{product.discountPercentage}% OFF</h5>
           </div>
         </div>
         <div className="py-10 ">
-          <h5 onClick={()=>handleCart(product)} className='font-publicSans bg-[#FA8232] py-5 text-white text-center rounded-xl cursor-pointer'>Add to Cart</h5>
+          <h5 onClick={()=>handleCart(product)} className='font-publicSans bg-[#FA8232] lg:py-5 py-3 text-white text-center rounded-xl cursor-pointer lg:text-[16px] text-[14px]'>Add to Cart</h5>
         </div>
         <div className=" py-6 border-2 border-gray-200 px-4 shadow-x">
           <p className='font-publicSans text-sm pb-3 '>100% Guarantee Safe Checkout</p>
