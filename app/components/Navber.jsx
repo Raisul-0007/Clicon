@@ -70,7 +70,7 @@ const Navber = () => {
           <div className="relative ">
             <LuShoppingCart />
             {addToCart.length > 0 && (
-            <p className="text-sm h-5 w-5 rounded-full bg-white text-[#1b6392] absolute -top-3 -right-3 flex justify-center items-center">{addToCart.length}</p>
+            <p className="text-sm lg:h-5 lg:w-5 h-3.5 w-3.5 lg:text-[16px] text-[10px] rounded-full bg-white text-[#1b6392] absolute -top-3 -right-3 flex justify-center items-center">{addToCart.length}</p>
             )}
           </div>
           </Link>

@@ -26,7 +26,7 @@ const page = () => {
     return total + ((item.price * item.discountPercentage) / 100) * item.qun
   },0)
 
-  let shipping = 6
+  let shipping = cartData.length > 0 ? 6 : 0;
   let tax = (subTotal * 5) / 100
   let grandTotal = subTotal + shipping + tax
   return (
@@ -384,7 +384,7 @@ const page = () => {
                   <li className="flex flex-wrap gap-4 text-sm">
                     Shipping
                     <span className="ml-auto font-semibold text-slate-900">
-                      $6.00
+                      ${shipping}
                     </span>
                   </li>
                   <li className="flex flex-wrap gap-4 text-sm">

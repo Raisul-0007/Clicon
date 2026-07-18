@@ -36,16 +36,16 @@ const page = () => {
       (
         <div className="">
           <div className="flex  bg-[#1b6392] text-white">
-        <div className="w-2/5 py-5 border border-b-0 border-r-0 border-[#dbdbdb] text-center">
+        <div className="w-3/6 py-5 border border-b-0 border-r-0 border-[#dbdbdb] text-center">
         <h3 className='font-bold lg:text-xl text-[14px]'>Product Details</h3>
         </div>
-        <div className="w-1/5 py-5 border border-b-0 border-r-0 border-[#dbdbdb] text-center">
+        <div className="w-1/6 py-5 border border-b-0 border-r-0 border-[#dbdbdb] text-center">
         <h3 className='font-bold lg:text-xl text-[14px]'>Price</h3>
         </div>
-        <div className="w-1/5 py-5 border border-b-0 border-r-0 border-[#dbdbdb] text-center">
-        <h3 className='font-bold lg:text-xl text-[14px]'>Quantity</h3>
+        <div className="w-1/6 py-5 border border-b-0 border-r-0 border-[#dbdbdb] text-center">
+        <h3 className='font-bold lg:text-xl text-[13px]'>Quantity</h3>
         </div>
-        <div className="w-1/5 py-5 border border-b-0  border-[#dbdbdb] text-center">
+        <div className="w-1/6 py-5 border border-b-0  border-[#dbdbdb] text-center">
         <h3 className='font-bold lg:text-xl text-[14px]'>Total</h3>
         </div>
       </div>
@@ -53,28 +53,28 @@ const page = () => {
         {cartData.map((item) => (
         <div key={item.id} className="">
            <div className="flex ">
-          <div className="w-2/5 py-3 border border-t-0 border-r-0 border-[#dbdbdb]  flex justify-center items-center lg:gap-5">
+          <div className="w-3/6 py-3 border border-t-0 border-r-0 border-[#dbdbdb]  flex justify-around items-center lg:gap-5">
           <div onClick={()=>handleRemove(item)} className="border border-[#dbdbdb] h-5 w-5 cursor-pointer flex items-center justify-center">
             <RxCross2 />
           </div>
             <div className="flex items-center gap-3 justify-center">
-              <div className="h-15 w-15 border border-[#f5f5f5]">
+              <div className="lg:h-15 lg:w-15 h-8 w-12 border border-[#f5f5f5]">
                 <img src={item.thumbnail} alt={item.id} />
               </div>
               <h3 className='font-bold lg:text-xl text-[14px]'>{item.title}</h3>
             </div>
           </div>
-          <div className="w-1/5 py-3 border border-t-0 border-r-0 border-[#dbdbdb] flex items-center justify-center lg:text-[16px] text-[12px]">
+          <div className="w-1/6 py-3 border border-t-0 border-r-0 border-[#dbdbdb] flex items-center justify-center lg:text-[16px] text-[12px]">
             $ {((item.price - (item.price * item.discountPercentage) / 100)).toFixed(2)}
           </div>
-          <div className="w-1/5 py-3 flex justify-center items-center gap-2 border border-t-0 border-r-0 border-[#dbdbdb]">
+          <div className="w-1/6 py-3 flex justify-center items-center gap-2 border border-t-0 border-r-0 border-[#dbdbdb]">
           <div onClick={()=> handleDecrement(item)} className="border border-[#dbdbdb] cursor-pointer p"><FiMinus/></div>
           <div className="lg:text-[16px] text-[12px]">
             {item.qun}
           </div>
           <div onClick={()=>handleIncrement(item)} className="border border-[#dbdbdb] cursor-pointer p"><FiPlus/></div>
           </div>
-          <div className="w-1/5 py-3 flex justify-center items-center border border-t-0  border-[#dbdbdb] lg:text-[16px] text-[12px]">
+          <div className="w-1/6 py-3 flex justify-center items-center border border-t-0  border-[#dbdbdb] lg:text-[16px] text-[12px]">
           <h3>$ {(((item.price - (item.price * item.discountPercentage) / 100))* item.qun).toFixed(2)}</h3>
           </div>
         </div>
